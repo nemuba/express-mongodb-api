@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const {  UsersController } = require('./controllers');
 
-const ACCESS_KEY = process.env.ACCESS_KEY || 'access';
-const SECRET_KEY = process.env.SECRET_KEY || 'secret';
+const ACCESS_KEY = process.env.ACCESS_TOKEN;
+const SECRET_KEY = process.env.SECRET_TOKEN;
 
 // Middleware for authentication
 function authenticateToken(req, res, next) {

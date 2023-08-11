@@ -33,7 +33,7 @@ class UsersController {
 
     try{
       const result = await Users.create(req.body);
-      return res.json(result);
+      return res.status(201).json(result);
     }catch(err){
       console.debug(err);
       return res.status(400).json({ errors: err.errors });

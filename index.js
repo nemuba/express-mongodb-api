@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -23,3 +24,5 @@ app.use(Routes);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+module.exports = app;
