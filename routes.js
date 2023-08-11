@@ -41,5 +41,6 @@ router.get('/users/:id', authenticateToken, UsersController.show);
 router.post('/users', authenticateToken, UsersController.create);
 router.put('/users/:id', authenticateToken, UsersController.update);
 router.delete('/users/:id', authenticateToken, UsersController.delete);
+router.post('/users/destroy', authenticateToken, UsersController.destroy);
 
 module.exports = router;

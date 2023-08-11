@@ -1,4 +1,5 @@
 const Queue = require('bull');
+const DeleteUser = require('../services/delete_user');
 
 const DeletUserJob = new Queue('DeletUserJob', {
   redis: {
@@ -10,10 +11,12 @@ const DeletUserJob = new Queue('DeletUserJob', {
 DeletUserJob.process(async (job, done) => {
   const { userIds } = job.data;
 
-  await userIds.forEach((userId) => {
-    setTimeout(() => {
-      console.debug('DeletUserJob', userId);
-    }, 3000);
+  await userIds.forEach(async (userId) => {
+    try{
+      await DeleteUser.execute(userId);
+    }catch(err){
+      done(new Error(err));
+    }
   });
 
   done();
