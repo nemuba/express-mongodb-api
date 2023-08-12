@@ -5,6 +5,7 @@ const app = require('../index.js');
 const jwt = require('jsonwebtoken');
 const { faker } = require('@faker-js/faker');
 const Users = require('../models/users');
+const DeleteUserJob = require('../jobs/delete_user');
 
 
 require('dotenv').config();
@@ -88,6 +89,17 @@ describe('Teste de integração', () => {
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('object');
       });
+  });
+
+  it('Deve deletar um usuário com job', async () => {
+    await DeleteUserJob.add({ userIds: ['5f9b3b9b9d9b9b9b9b9b9b9b'] });
+
+    return new Promise((resolve) => {
+      DeleteUserJob.on('completed', (result) => {
+        expect(result).to.be.an('object');
+        resolve();
+      });
+    });
   });
 
 });

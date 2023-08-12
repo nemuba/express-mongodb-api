@@ -5,7 +5,7 @@ class DeleteUser{
   static async execute(id){
     try{
       const user = await Users.deleteOne({_id: id});
-      console.debug('User deleted: ', user);
+      return user;
     }catch(err){
       throw err;
     }
