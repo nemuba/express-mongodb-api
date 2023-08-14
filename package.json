@@ -23,8 +23,5 @@
     "supertest": "^6.3.3",
     "winston": "^3.10.0",
     "@faker-js/faker": "^8.0.2"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^8.0.2"
   }
 }
